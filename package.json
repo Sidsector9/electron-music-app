@@ -1,22 +1,52 @@
 {
   "name": "electron-music-app",
   "version": "0.1.0",
-  "description": "",
-  "main": "main.js",
+  "private": true,
+  "dependencies": {
+    "electron": "^5.0.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "homepage": "./",
+  "main": "src/start.js",
   "scripts": {
-    "start": "electron ."
+    "start": "nf start -p 3000",
+	"build": "react-scripts build",
+	"test": "react-scripts test --env=jsdom",
+	"eject": "react-scripts eject",
+	"electron": "electron .",
+	"electron-start": "node src/start-react",
+	"react-start": "BROWSER=none react-scripts start",
+	"pack": "build --dir",
+	"dist": "npm run build && build",
+	"postinstall": "install-app-deps"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sidsector9/electron-music-app.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sidsector9/electron-music-app/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/Sidsector9/electron-music-app#readme",
   "devDependencies": {
-    "electron": "^5.0.6"
+    "electron-builder": "^21.0.15"
+  },
+  "build": {
+	"appId": "com.electron.electron-with-create-react-app",
+	"win": {
+	  "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
+	},
+	"directories": {
+	  "buildResources": "public"
+	}
   }
 }
